@@ -31,7 +31,7 @@ public class MainController {
             @AuthenticationPrincipal User user
     ) {
         HashMap<Object, Object> attributeValue = new HashMap<>();
-        if (user!=null) {
+        if (user != null) {
             attributeValue.put("profile", user);
             attributeValue.put("messages", messageRepository.findAll());
         }
