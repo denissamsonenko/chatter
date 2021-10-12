@@ -31,8 +31,10 @@ public class MainController {
             @AuthenticationPrincipal User user
     ) {
         HashMap<Object, Object> attributeValue = new HashMap<>();
-        attributeValue.put("profile", user);
-        attributeValue.put("messages", messageRepository.findAll());
+        if (user!=null) {
+            attributeValue.put("profile", user);
+            attributeValue.put("messages", messageRepository.findAll());
+        }
 
         model.addAttribute("frontendData", attributeValue);
         model.addAttribute("isDevMode", "dev".equals(profile));
